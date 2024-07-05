@@ -1,0 +1,1 @@
+print('The function was imported successfully')
