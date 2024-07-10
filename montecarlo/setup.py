@@ -8,9 +8,5 @@ setup(
     packages = ["montecarlo"],
     url = 'https://github.com/Jonathan-swap/ds5100-finalproject-js7jx',
     license = 'LICENSE.txt',
-    description = 'An awesome package that runs a monte carlo simulation',
-    install_requires = [
-        "Django >= 1.1.1",
-        "pytest",
-    ],
+    description = 'An awesome package that runs a monte carlo simulation'
 )
