@@ -74,7 +74,7 @@ class Game():
         self.listofinstantiateddice = listofinstantiateddice
         self._private_outcome_df = pd.DataFrame()
     
-    def play_game(self,numberoftimes = 1): 
+    def play_game(self,numberoftimes): 
         '''PURPOSE: this method rolls the die as many times as you want, but is defualted at 1 roll, for each 
         die in the list of die you originally input and then appends those results to the private dataframe.
          
