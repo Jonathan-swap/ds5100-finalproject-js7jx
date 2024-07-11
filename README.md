@@ -14,8 +14,10 @@ final project repository
 
     ```python
     from montecarlo.montecarlo import Die, Game, Analyzer
+    ```
+* DIE CLASS DEMONSTRATION
 
-    ## DIE CLASS DEMONSTRATION
+```python
     #this create a six sided die with equal weight/probabilities
     die = Die(np.array([1,2,3,4,5,6]))
     #altering the weight to make 2 and 3 more likely to be picked  and checking the weights
@@ -24,17 +26,22 @@ final project repository
     die.get_dies_state()
     #roll the dice for n many times and see the list of results
     die.roll_dice(5)
+```
 
-    ## GAME CLASS DEMONSTRATION
+* GAME CLASS DEMONSTRATION
+
+```python
     #creates 3 fair die and instantiate that list
     die = Die(np.array([1,2,3,4,5,6]))
     game = Game([die,die,die])
     #plays a game with 5 rolls for rolling all 3 die and view the dataframe of results
     game.play_game(5)
     game.most_recent(form='wide')
+```
 
+* ANALYZER CLASS DEMONSTRATION
 
-    ## ANALYZER CLASS DEMONSTRATION
+```python
     #instantiate a gameobject, check for number of jackpots, and then check how many face values were rolled each roll
     die = Die(np.array([1,2,3,4,5,6]))
     game = Game([die,die,die])
@@ -51,7 +58,8 @@ final project repository
 
 ## API Description
 ### DIE
-    ```python
+
+```python
     
     """This class, Die, creates an n dimensional die with equal, defualt weights, 
     or better thought of as probabilities, that can be adjusted as needed. 
@@ -94,6 +102,7 @@ final project repository
         '''
 ```
 ### GAME
+
 ```python
     """This class, Game, rolls a list of instantiated die and only keep the results 
     of their most recent play. Each die has the same number of sides, and each game
@@ -177,4 +186,4 @@ final project repository
         INPUT: no inputs
         OUTPUT: a dataframe with one column of the frequency that permutation was rolled in the game.
         '''
-    ```
+```
