@@ -10,7 +10,8 @@ class Die():
     also known as the compiled list of the n rolls can be retrieved at any point."""
 
     def __init__(self, faces):
-        '''
+        '''__init__(self, faces)
+
         PURPOSE: initializes the weights from the input face values.
 
         INPUT: a NumPy array of either strings or integers that will name the sides of the die
@@ -28,7 +29,9 @@ class Die():
         self._facesweights = pd.DataFrame(self.weights, index = self.faces)
 
     def set_weight(self,facevalue,newweight):
-        '''PURPOSE: to change the weight of the faces for the die.
+        '''set_weight(self,facevalue,newweight)
+        
+        PURPOSE: to change the weight of the faces for the die.
 
             INPUT: the face value that you want to change, which should be a string or integer, 
             and the new weight you want to assign it which should be an integer or float
@@ -44,7 +47,9 @@ class Die():
         except: KeyError
 
     def roll_dice(self,rolls = 1):
-        '''PURPOSE: to randomly sample the die, aka roll the die, while taking into consideration 
+        '''roll_dice(self,rolls = 1)
+        
+        PURPOSE: to randomly sample the die, aka roll the die, while taking into consideration 
         the number of faces the die has and their respective weights. It adds the selection to a list.
 
             INPUT: number of rolls, otherwise defaults to 1 roll
@@ -54,7 +59,9 @@ class Die():
         return roll_list.copy()
 
     def get_dies_state(self):
-        '''PURPOSE: to see the state of die, which holds the faces and weights of the die.
+        '''get_dies_state(self)
+        
+        PURPOSE: to see the state of die, which holds the faces and weights of the die.
 
         INPUT: no inputs
         OUTPUT: a dataframe of the faces and weights of the die.
@@ -66,7 +73,9 @@ class Game():
     of their most recent play. Each die has the same number of sides, and each game
     is initialized with a python list of one or more die.""" 
     def __init__(self, listofinstantiateddice):
-        '''PURPOSE: Initializes a list of dice into the game method. 
+        '''__init__(self, listofinstantiateddice)
+        
+        PURPOSE: Initializes a list of dice into the game method. 
 
             INPUT: the list of instatiated dice is a list with individual die
             OUTPUT: nothing
@@ -75,7 +84,9 @@ class Game():
         self._private_outcome_df = pd.DataFrame()
     
     def play_game(self,numberoftimes): 
-        '''PURPOSE: this method rolls the die as many times as you want, but is defualted at 1 roll, for each 
+        '''play_game(self,numberoftimes)
+        
+        PURPOSE: this method rolls the die as many times as you want, but is defualted at 1 roll, for each 
         die in the list of die you originally input and then appends those results to the private dataframe.
          
             INPUT: the number of times you want to roll all your die. This will default to 1 roll if not specified
@@ -85,7 +96,9 @@ class Game():
             self._private_outcome_df[f' die number {i+1}'] = x.roll_dice(numberoftimes)
         
     def most_recent(self, form = 'wide'):
-        '''PURPOSE: To show you your most recent results in the table format of your choosing, between 'narrow' and 'wide'.
+        '''most_recent(self, form = 'wide')
+        
+        PURPOSE: To show you your most recent results in the table format of your choosing, between 'narrow' and 'wide'.
 
             INPUT:  you can specify the format of the table that you want, if you dont specify 'narrow', the other option, 
             it will default to 'wide'
@@ -104,7 +117,9 @@ class Analyzer():
     a jackpot and evaluate the number of each face value in the most recent roll. Additionally, you 
     can see the number of times each possible combinations and permutations was rolled"""
     def __init__(self,gameobject):
-        '''PURPOSE: to initialize a gameobject, a game that has been played with any number of die. 
+        '''__init__(self,gameobject)
+        
+        PURPOSE: to initialize a gameobject, a game that has been played with any number of die. 
 
             INPUT: a game object, which should be an instance from the Game class.
             OUTPUT: it will raise a ValueError if the gameobject is not from the Game class.
@@ -114,7 +129,9 @@ class Analyzer():
         self.gameobject = gameobject
 
     def jackpot(self):
-        '''PURPOSE: This method will tell you the number of jackpots you win, the same face value being shown on all die. 
+        '''jackpot(self)
+        
+        PURPOSE: This method will tell you the number of jackpots you win, the same face value being shown on all die. 
 
         INPUT: no inputs
         OUTPUT: it returns a counter that goes through each of the rows in the dataframe and if the row has one unique 
@@ -129,7 +146,9 @@ class Analyzer():
         return self.counter
         
     def facecounts_per_roll(self):
-        '''PURPOSE: this will return a dataframe with how often each face value is rolled each roll for the game.
+        '''facecounts_per_roll(self)
+        
+        PURPOSE: this will return a dataframe with how often each face value is rolled each roll for the game.
 
         INPUT: no inputs
         OUTPUT: a data frame with columns for each face values, the indices area the roll numbers, and the valeus 
@@ -138,7 +157,9 @@ class Analyzer():
         return pd.DataFrame(self.gameobject.most_recent()).apply(pd.Series.value_counts,axis = 1).fillna(0)
 
     def combo_count(self):
-        '''PURPOSE: this functions looks at all the possible combinations with the face values and appends that to a list. 
+        '''combo_count(self):
+        
+        PURPOSE: this functions looks at all the possible combinations with the face values and appends that to a list. 
         Then creates a multiindex using the tuples of combinations and populates it with the number of times that combination
         was rolled in the game.
 
@@ -154,7 +175,9 @@ class Analyzer():
         return combinationdf.fillna(0)
 
     def permutation_count(self):
-        '''PURPOSE: this functions looks at all the possible permutations with the face values and appends that to a list. 
+        '''permutation_count(self):
+        
+        PURPOSE: this functions looks at all the possible permutations with the face values and appends that to a list. 
         Then creates a multiindex using the tuples of permutations and populates it with the number of times that permutation
         was rolled in the game.
 
