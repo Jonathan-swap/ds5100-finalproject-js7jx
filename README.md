@@ -53,7 +53,7 @@ final project repository
     #look at the number of possible combinations and permutation
     analyzer.combo_count()
     analyzer.permutation_count()
-    ```
+```
 
 
 ## API Description
