@@ -33,10 +33,10 @@ class Die():
         
         PURPOSE: to change the weight of the faces for the die.
 
-            INPUT: the face value that you want to change, which should be a string or integer, 
-            and the new weight you want to assign it which should be an integer or float
-            OUTPUT: an updated dataframe that has the new weight values for the faces you wanted to change
-            '''
+        INPUT: the face value that you want to change, which should be a string or integer, 
+        and the new weight you want to assign it which should be an integer or float
+        OUTPUT: an updated dataframe that has the new weight values for the faces you wanted to change
+        '''
         if facevalue not in self.faces:
             raise IndexError('The face value is not in the array of faces you input originally.')
         if (type(newweight) != int and type(newweight) != float):
@@ -52,9 +52,9 @@ class Die():
         PURPOSE: to randomly sample the die, aka roll the die, while taking into consideration 
         the number of faces the die has and their respective weights. It adds the selection to a list.
 
-            INPUT: number of rolls, otherwise defaults to 1 roll
-            OUTPUT: It returns a list with the roll results.
-            '''
+        INPUT: number of rolls, otherwise defaults to 1 roll
+        OUTPUT: It returns a list with the roll results.
+        '''
         roll_list = np.random.choice(a=self.faces,p=[i/sum(self.weights) for i in self.weights],size=rolls)
         return roll_list.copy()
 
@@ -77,9 +77,9 @@ class Game():
         
         PURPOSE: Initializes a list of dice into the game method. 
 
-            INPUT: the list of instatiated dice is a list with individual die
-            OUTPUT: nothing
-            '''
+        INPUT: the list of instatiated dice is a list with individual die
+        OUTPUT: nothing
+        '''
         self.listofinstantiateddice = listofinstantiateddice
         self._private_outcome_df = pd.DataFrame()
     
@@ -89,8 +89,8 @@ class Game():
         PURPOSE: this method rolls the die as many times as you want, but is defualted at 1 roll, for each 
         die in the list of die you originally input and then appends those results to the private dataframe.
          
-            INPUT: the number of times you want to roll all your die. This will default to 1 roll if not specified
-            OUTPUT: no output
+        INPUT: the number of times you want to roll all your die. This will default to 1 roll if not specified
+        OUTPUT: no output
         '''
         for i,x in enumerate(self.listofinstantiateddice):
             self._private_outcome_df[f' die number {i+1}'] = x.roll_dice(numberoftimes)
@@ -100,11 +100,11 @@ class Game():
         
         PURPOSE: To show you your most recent results in the table format of your choosing, between 'narrow' and 'wide'.
 
-            INPUT:  you can specify the format of the table that you want, if you dont specify 'narrow', the other option, 
-            it will default to 'wide'
-            OUTPUT: it will return the data frame of results from your play game method in the format of your choosing. 
-            It will raise a valueerror if you dont enter a valid form argument.
-            '''
+        INPUT:  you can specify the format of the table that you want, if you dont specify 'narrow', the other option, 
+        it will default to 'wide'
+        OUTPUT: it will return the data frame of results from your play game method in the format of your choosing. 
+        It will raise a valueerror if you dont enter a valid form argument.
+        '''
         if form.lower() == 'narrow':
             return self._private_outcome_df.stack().copy()
         if form.lower() == 'wide':
@@ -121,9 +121,9 @@ class Analyzer():
         
         PURPOSE: to initialize a gameobject, a game that has been played with any number of die. 
 
-            INPUT: a game object, which should be an instance from the Game class.
-            OUTPUT: it will raise a ValueError if the gameobject is not from the Game class.
-            '''
+        INPUT: a game object, which should be an instance from the Game class.
+        OUTPUT: it will raise a ValueError if the gameobject is not from the Game class.
+        '''
         if not isinstance(gameobject, Game):
             raise ValueError('This game object is not an instance of the Game class.')
         self.gameobject = gameobject

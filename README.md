@@ -1,17 +1,17 @@
 # ds5100-finalproject-js7jx
 final project repository
 
-    Metadata: 
+## Metadata
     - Author: Jonathan Swap
     - Name: Monte Carlo Simulator
     - Language: Python
 
-    Synopsis:
+## Synopsis
     - The first class, Die, is meant to create an n-dimensional die with faces that are integers or strings. The second class, Game, can take a list of die objects, play a game, and ouput the results. The third class, Analyzer, takes in a game object and can show how many jackpots there were, how many times a face value was shown in a single roll in the game object.
 
-    installation 
+## installation 
     - fork and clone the repo to your local computer. Open your terminal in VS Code, or any IDE or your local computer terminal, and then cd into your cloned repo. Then pip install . there. If it successfully imports, it should print 'The function was imported successfully' and the version number is '0.1.0'. There is example code for the montecarlo simulation below:
-    
+
     ```python
     from montecarlo.montecarlo import Die, Game, Analyzer
 
@@ -49,9 +49,10 @@ final project repository
     ```
 
 
-    API Description:
+## API Description
+### DIE
     ```python
-    #DIE
+    
     """This class, Die, creates an n dimensional die with equal, defualt weights, 
     or better thought of as probabilities, that can be adjusted as needed. 
     Additionally, this die can be rolled n many times and the state of the die, 
@@ -69,19 +70,19 @@ final project repository
         
         PURPOSE: to change the weight of the faces for the die.
 
-            INPUT: the face value that you want to change, which should be a string or integer, 
-            and the new weight you want to assign it which should be an integer or float
-            OUTPUT: an updated dataframe that has the new weight values for the faces you wanted to change
-            '''
+        INPUT: the face value that you want to change, which should be a string or integer, 
+        and the new weight you want to assign it which should be an integer or float
+        OUTPUT: an updated dataframe that has the new weight values for the faces you wanted to change
+        '''
 
     '''roll_dice(self,rolls = 1)
         
         PURPOSE: to randomly sample the die, aka roll the die, while taking into consideration 
         the number of faces the die has and their respective weights. It adds the selection to a list.
 
-            INPUT: number of rolls, otherwise defaults to 1 roll
-            OUTPUT: It returns a list with the roll results.
-            '''
+        INPUT: number of rolls, otherwise defaults to 1 roll
+        OUTPUT: It returns a list with the roll results.
+        '''
 
 
     '''get_dies_state(self)
@@ -91,9 +92,9 @@ final project repository
         INPUT: no inputs
         OUTPUT: a dataframe of the faces and weights of the die.
         '''
-
-    #GAME:
-
+```
+### GAME
+```python
     """This class, Game, rolls a list of instantiated die and only keep the results 
     of their most recent play. Each die has the same number of sides, and each game
     is initialized with a python list of one or more die.""" 
@@ -102,31 +103,31 @@ final project repository
         
         PURPOSE: Initializes a list of dice into the game method. 
 
-            INPUT: the list of instatiated dice is a list with individual die
-            OUTPUT: nothing
-            '''
+        INPUT: the list of instatiated dice is a list with individual die
+        OUTPUT: nothing
+        '''
 
     '''play_game(self,numberoftimes)
     
     PURPOSE: this method rolls the die as many times as you want, but is defualted at 1 roll, for each 
         die in the list of die you originally input and then appends those results to the private dataframe.
          
-            INPUT: the number of times you want to roll all your die. This will default to 1 roll if not specified
-            OUTPUT: no output
+        INPUT: the number of times you want to roll all your die. This will default to 1 roll if not specified
+        OUTPUT: no output
         '''
 
     '''most_recent(self, form = 'wide')
         
         PURPOSE: To show you your most recent results in the table format of your choosing, between 'narrow' and 'wide'.
 
-            INPUT:  you can specify the format of the table that you want, if you dont specify 'narrow', the other option, 
-            it will default to 'wide'
-            OUTPUT: it will return the data frame of results from your play game method in the format of your choosing. 
-            It will raise a valueerror if you dont enter a valid form argument.
-            '''
-
-    #ANALYZER:
-
+        INPUT:  you can specify the format of the table that you want, if you dont specify 'narrow', the other option, 
+        it will default to 'wide'
+        OUTPUT: it will return the data frame of results from your play game method in the format of your choosing. 
+        It will raise a valueerror if you dont enter a valid form argument.
+        '''
+```
+### ANALYZER
+```python
     """This class, the Analyzer class, will provide functions to determine whether you have gotten 
     a jackpot and evaluate the number of each face value in the most recent roll. Additionally, you 
     can see the number of times each possible combinations and permutations was rolled"""
@@ -135,9 +136,9 @@ final project repository
         
         PURPOSE: to initialize a gameobject, a game that has been played with any number of die. 
 
-            INPUT: a game object, which should be an instance from the Game class.
-            OUTPUT: it will raise a ValueError if the gameobject is not from the Game class.
-            '''
+        INPUT: a game object, which should be an instance from the Game class.
+        OUTPUT: it will raise a ValueError if the gameobject is not from the Game class.
+        '''
 
     '''jackpot(self)
         
